@@ -35,7 +35,7 @@ class ProductTest < ActiveSupport::TestCase
     assert product.valid?
   end
   
-  def new_product(image_url)
+  def new_product_image(image_url)
     Product.new(
       :title => "My Book Title", 
       :description => "yyy",
@@ -48,11 +48,11 @@ class ProductTest < ActiveSupport::TestCase
     bad = %w{ fred.doc fred.gif/more fred.gif.more }
     
     ok.each do |name|
-      assert new_product(name).valid?, "#{name} shouldn't be invalid"
+      assert new_product_image(name).valid?, "#{name} shouldn't be invalid"
     end
     
     bad.each do |name|
-      assert new_product(name).invalid?, "#{name} shouldn't be valid"
+      assert new_product_image(name).invalid?, "#{name} shouldn't be valid"
     end
     
   end
@@ -66,5 +66,22 @@ class ProductTest < ActiveSupport::TestCase
     assert !product.save
     assert_equal I18n.translate('activerecord.errors.messages.taken'), product.errors[:title].join('; ')
   end
+  
+  def new_product_title(title)
+    Product.new(
+      :title => title, 
+      :description => "yyy",
+      :price  => 1, 
+      :image_url => "fred.gif")
+  end
+  
+  test "product title must be at least 10 characters" do
+    good_title = "Long titles"
+    bad_title = "bad"
+    
+    assert new_product_title(good_title).valid?
+    assert new_product_title(bad_title).invalid?
+  end
+  
   
 end
