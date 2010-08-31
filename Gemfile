@@ -14,13 +14,18 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'ruby-debug'
+#gem 'ruby-debug'
+
+# 1.9.x debugger.  comment out for no debugger
+gem 'ruby-debug19', :require => 'ruby-debug'
 
 # Bundle the extra gems:
 # gem 'bj'
 # gem 'nokogiri'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
+
+gem 'will_paginate', '>= 3.0.pre'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
