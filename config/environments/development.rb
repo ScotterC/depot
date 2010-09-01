@@ -24,20 +24,20 @@ Depot::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
   
   # Set action mailer to test
-  config.action_mailer.delivery_method = :test
+  # config.action_mailer.delivery_method = :test
   
-  # #Typical Gmail settings
-  # config.action_mailer.delivery_method = :smtp
-  # 
-  # config.action_mail.smtp_settings = {
-  #   :address                => "smtp.gmail.com",
-  #   :port                   => 587,
-  #   :domain                 => "domain.of.sender.net",
-  #   :authentication         => "plain",
-  #   :user_name              => "dave",
-  #   :password               => "secret",
-  #   :enable_starttls_auto   => true
-  # }
+  #Typical Gmail settings
+  config.action_mailer.delivery_method = :smtp
+  
+  config.action_mailer.smtp_settings = {
+    :address                => "smtp.gmail.com",
+    :port                   => 587,
+    :domain                 => "domain.of.sender.net",
+    :authentication         => "plain",
+    :user_name              => "dave",
+    :password               => "secret",
+    :enable_starttls_auto   => true
+  }
   
 end
 

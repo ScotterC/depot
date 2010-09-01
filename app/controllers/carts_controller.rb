@@ -1,4 +1,6 @@
 class CartsController < ApplicationController
+  skip_before_filter :authorize, :only => [:create, :update, :delete]
+  
   # GET /carts
   # GET /carts.xml
   def index
@@ -17,6 +19,7 @@ class CartsController < ApplicationController
       @cart = Cart.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       logger.error "Attempt to access invalid cart #{params[:id]}"
+      Notifier.record_not_found.deliver
       redirect_to store_url, :notice => 'Invalid cart item'
     else
       respond_to do |format|

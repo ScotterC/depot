@@ -1,7 +1,13 @@
 class StoreController < ApplicationController
+  skip_before_filter :authorize
+  
   def index
-    @products = Product.all
-    @cart = current_cart
+    if params[:set_locale]
+      redirect_to store_path(:locale => params[:set_locale])
+    else
+      @products = Product.all
+      @cart = current_cart
+    end
     @date = Time.now.strftime("%B %d, %Y")
     @time = Time.now.strftime("%I:%M %p")
     @count = increment_count
