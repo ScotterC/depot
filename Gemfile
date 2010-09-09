@@ -6,18 +6,21 @@ gem 'rails', '3.0.0.rc2'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
+group :production do
+	gem 'mysql'
+end
 
 # Use unicorn as the web server
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 #gem 'ruby-debug'
 
 # 1.9.x debugger.  comment out for no debugger
-gem 'ruby-debug19', :require => 'ruby-debug'
+#gem 'ruby-debug19', :require => 'ruby-debug'
 
 # Bundle the extra gems:
 # gem 'bj'
@@ -33,3 +36,5 @@ gem 'will_paginate', '>= 3.0.pre'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+
